@@ -145,7 +145,7 @@
     var currentMonth = date.getMonth();
     var currentDay = date.getDay();
     var currentDate = date.getDate();
-    var currentYear = date.FullYear();
+    var currentYear = date.getFullYear();
 
     console.log(currentMonth);
     console.log(currentDay);
@@ -162,10 +162,25 @@
         "June",
         "July",
         "August",
-        "Spetember",
+        "September",
         "October",
         "November",
         "December",
     ];
+
+    /* set month correctly */
+    var title = document.getElementById("title");
+    title.innerHTML = "🌸" + months[currentMonth] + "🌸";
+
+    /* update calendar info */
+    var habitTitle = document.getElementById("habitTitle");
+    habitTitle.onclick = function () {
+        let habits = prompt("What's your habit", habitTitle.innerHTML)
+        if(habits.length == 0){
+            habitTitle.innerHTML = "Click to set your habit";
+        } else {
+            habitTitle.innerHTML = habits
+        }
+    }
 </script>
 </html>
