@@ -10,13 +10,13 @@
     <h1 id="title">Month</h1>
     <h2 id="subtitle">Monthly Habit Tracker</h2>
 
-    <div id="calenderContainer">
-        <div id="calenderDiv">
-            <div id="calenderHeading">
+    <div id="calendarContainer">
+        <div id="calendarDiv">
+            <div id="calendarHeading">
                 <p id="habitTitle">My New Habit</p>
                 <p id="totalDays">0/31</p>
             </div>
-            <div id="calenderContent">
+            <div id="calendarContent">
 
                 <div id="tracker">
                     <div class="days">
@@ -91,12 +91,12 @@
     margin-bottom: 20px;
 }
 
-#calenderContainer {
+#calendarContainer {
     display: flex;
     justify-content: center;
 }
 
-#calenderDiv {
+#calendarDiv {
     background-color: rgb(255,255,255);
     border-radius: 10px 10px 0px 0px;
     margin: auto;
@@ -104,7 +104,7 @@
     text-align: center;
 }
 
-#calenderHeading {
+#calendarHeading {
     display: flex;
     justify-content: space-between;
     border-radius: 10px 10px 0px 0px;
@@ -115,7 +115,7 @@
     line-height: 0px;
 }
 
-#calenderContent {
+#calendarContent {
     padding: 20px;
     border: 2px solid black;
 }
@@ -136,51 +136,4 @@
 }
 </style>
 
-<script>
-    /* get date */
-    var date = new Date();
-    console.log(date);
-
-    /* extract current date */
-    var currentMonth = date.getMonth();
-    var currentDay = date.getDay();
-    var currentDate = date.getDate();
-    var currentYear = date.getFullYear();
-
-    console.log(currentMonth);
-    console.log(currentDay);
-    console.log(currentDate);
-    console.log(currentYear);
-
-    /* Months of the year */
-    var months = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-    ];
-
-    /* set month correctly */
-    var title = document.getElementById("title");
-    title.innerHTML = "🌸" + months[currentMonth] + "🌸";
-
-    /* update calendar info */
-    var habitTitle = document.getElementById("habitTitle");
-    habitTitle.onclick = function () {
-        let habits = prompt("What's your habit", habitTitle.innerHTML)
-        if(habits.length == 0){
-            habitTitle.innerHTML = "Click to set your habit";
-        } else {
-            habitTitle.innerHTML = habits
-        }
-    }
-</script>
 </html>
