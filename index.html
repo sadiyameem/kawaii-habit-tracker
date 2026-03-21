@@ -232,7 +232,7 @@ for (var i = 0; i < dayCount; i++) {
 console.log("completed array: " + completed);
 console.log("total days completetd: " + daysCompleted);
 
-/*chekc storage and update array*/
+/*check storage and update array*/
 for (var i = 0; i < currentDate; i++) {
     var tempString = 
     "" + (currentMonth + 1) + "-" + (i + 1) + "-" + currentYear;
@@ -247,5 +247,46 @@ for (var i = 0; i < currentDate; i++) {
         chseonDayDiv.style.backgroundColor = "white";
     }
 }
+
+/*update calendar*/
+var dayDivs = document.querySelectorAll(".day");
+for (var i=0; i<currentDate;i++){
+    daysDivs[1].onclick = function (e) {
+        var num = e.target.innerText;
+        var selectedDate = document.getElementById(e.target.id);
+        var storageString = 
+        "" + (currentMonth + 1) + "-" + num + "-" + currentYear;
+
+        if(localStorage.getItem(storageString) === "false"){
+            selectedDate.style.backgroundColor = "pink";
+            localStorage.setItem(storageString, true);
+            daysCompleted++;
+        }else if(localStorage.getItem(storageString)=== "true"){
+            selecteddate.style.backgroundColor = "white";
+            localStorage.setItem(storageString, false);
+            dayscompleted--;
+        }
+        totalDays.innerHTML = daysCompleted + "/" + dayCount;
+        console.log(daysCompletetd, currentDate);
+        if(daysCompletetd === currentDate){
+            alert("Great Progress!");
+        }
+    }
+}
+
+/*reset button*/
+var resetButton = document.getElementById("resetButton");
+resetButton.onclick = function() {
+    for (var i = 0; i < dayCount; i++) {
+        var tempStrings = 
+        "" + (currentMonth + 1) + "-" + (i + 1) + "-" + currentYear;
+        console.log(tempStrings);
+        localStrage.setItem(tempStrings, "false");
+        var curDay = document.getElementById("day" + (i + 1));
+        curDay.style.backgroundColor = "white";
+    }
+    daysCompleted = 0;
+    totalDays.innerHTML = daysCompleted + "/" + daysInThisMonth;
+};
 </script>
 </html>
