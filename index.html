@@ -131,7 +131,6 @@
     font-size: 15px;
     text-align: center;
     border-radius: 20px;
-    background-color: pink;
 }
 </style>
 
@@ -175,6 +174,7 @@
     var habitTitle = document.getElementById("habitTitle");
     habitTitle.onclick = function () {
 
+    /*ask question and save answer*/
     let habit = prompt("What's your habit", habitTitle.innerHTML);
     if(habits.length == 0){
         habitTitle.innerHTML = "Click to set your habit";
@@ -211,6 +211,41 @@ for( var i=0; i < days.length; i++ ){
         }
     }
     rowCount++;
+}
+
+/* completed array*/
+var completed = new Array(31);
+for (var i = 0; i < dayCount; i++) {
+    var tempString =
+    "" + (currentMonth + 1) + "-" + (i + 1) + "-" + currentYear;
+    console.log("storing date: " + tempString);
+    var tempDay = localStorage.getItem(tempString);
+    console.log(tempDay);
+    if(tempDay == null || tempDay == "false"){
+        localStorage.setItem(tempString, "false");
+    } else if (tempDay == "true") {
+        daysCompleted++;
+    }
+    totalDays.innerHTML = daysCompleted + "/" + daysInThisMonth;
+}
+
+console.log("completed array: " + completed);
+console.log("total days completetd: " + daysCompleted);
+
+/*chekc storage and update array*/
+for (var i = 0; i < currentDate; i++) {
+    var tempString = 
+    "" + (currentMonth + 1) + "-" + (i + 1) + "-" + currentYear;
+    console.log(tempString);
+
+    var chosenDay = localStorage.getItem(tempString);
+    console.log(i + 1 + ": " + chosenDay);
+    var chosenDayDiv = document.getElementById("day" + (i + 1));
+    if (chosenDay === "true") {
+        chosenDayDiv.style.backgroundColor = "pink";
+    } else if (chosenDay === "false") {
+        chseonDayDiv.style.backgroundColor = "white";
+    }
 }
 </script>
 </html>
