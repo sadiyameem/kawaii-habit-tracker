@@ -138,8 +138,12 @@
     background-color: pink;
     margin-top: 5px;
     padding: 10px;
-    font-size: 12px;
+    font-size: 14px;
     cursor: pointer;
+}
+
+#resetButton:hover {
+    background-color: lightpink;
 }
 </style>
 
@@ -185,7 +189,7 @@
 
     /*ask question and save answer*/
     let habit = prompt("What's your habit", habitTitle.innerHTML);
-    if(habit.length == 0){
+    if(habit){
         habitTitle.innerHTML = "Click to set your habit";
     }else{
         habitTitle.innerHTML = habit;
