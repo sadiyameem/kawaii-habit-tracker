@@ -176,15 +176,15 @@
 
     /*ask question and save answer*/
     let habit = prompt("What's your habit", habitTitle.innerHTML);
-    if(habits.length == 0){
+    if(habit.length == 0){
         habitTitle.innerHTML = "Click to set your habit";
     }else{
-        habitTitle.innerHTML = habits;
+        habitTitle.innerHTML = habit;
     }
 }
 
 /*set total days*/
-var daysInTheMonthList = [31, 28, 31, 30, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+var daysInTheMonthList = [31,28,31,30,31,30,31,31,30,31,30,31];
 var daysInThisMonth = daysInTheMonthList[currentMonth];
 
 var daysCompleted = 0;
@@ -244,14 +244,14 @@ for (var i = 0; i < currentDate; i++) {
     if (chosenDay === "true") {
         chosenDayDiv.style.backgroundColor = "pink";
     } else if (chosenDay === "false") {
-        chseonDayDiv.style.backgroundColor = "white";
+        chosenDayDiv.style.backgroundColor = "white";
     }
 }
 
 /*update calendar*/
 var dayDivs = document.querySelectorAll(".day");
-for (var i=0; i<currentDate;i++){
-    daysDivs[1].onclick = function (e) {
+for (var i=0; i<dayDivs.length; i++){
+    dayDivs[i].onclick = function (e) {
         var num = e.target.innerText;
         var selectedDate = document.getElementById(e.target.id);
         var storageString = 
@@ -259,16 +259,16 @@ for (var i=0; i<currentDate;i++){
 
         if(localStorage.getItem(storageString) === "false"){
             selectedDate.style.backgroundColor = "pink";
-            localStorage.setItem(storageString, true);
+            localStorage.setItem(storageString, "true");
             daysCompleted++;
         }else if(localStorage.getItem(storageString)=== "true"){
-            selecteddate.style.backgroundColor = "white";
-            localStorage.setItem(storageString, false);
-            dayscompleted--;
+            selectedDate.style.backgroundColor = "white";
+            localStorage.setItem(storageString, "false");
+            daysCompleted--;
         }
         totalDays.innerHTML = daysCompleted + "/" + dayCount;
-        console.log(daysCompletetd, currentDate);
-        if(daysCompletetd === currentDate){
+        console.log(daysCompleted, currentDate);
+        if(daysCompleted === currentDate){
             alert("Great Progress!");
         }
     }
@@ -281,7 +281,7 @@ resetButton.onclick = function() {
         var tempStrings = 
         "" + (currentMonth + 1) + "-" + (i + 1) + "-" + currentYear;
         console.log(tempStrings);
-        localStrage.setItem(tempStrings, "false");
+        localStorage.setItem(tempStrings, "false");
         var curDay = document.getElementById("day" + (i + 1));
         curDay.style.backgroundColor = "white";
     }
