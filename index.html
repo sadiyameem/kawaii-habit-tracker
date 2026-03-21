@@ -102,6 +102,7 @@
     margin: auto;
     align-content: center;
     text-align: center;
+    cursor: pointer;
 }
 
 #calendarHeading {
@@ -132,6 +133,14 @@
     text-align: center;
     border-radius: 20px;
 }
+
+#resetButton {
+    background-color: pink;
+    margin-top: 5px;
+    padding: 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
 </style>
 
 <script>
@@ -145,7 +154,7 @@
     var currentDate = date.getDate();
     var currentYear = date.getFullYear();
 
-    console.log(currentMonth); // current month -1
+    console.log(currentMonth); // current month
     console.log(currentDay); // day of the week
     console.log(currentDate); // current date and number
     console.log(currentYear); // current year
