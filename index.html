@@ -161,12 +161,11 @@ body {
 .weekdays {
     margin: 0;
     padding: 10px 0;
-    background-color: #ddd;
+    background-color: lightgray;
 }
 .weekdays li {
     display: inline-block;
     width: 13.6%;
-    color: #666;
     text-align: center;
     font-weight: bold;
 }
@@ -206,13 +205,13 @@ body {
 
     /* set correct month */
     var title = document.getElementById("title");
-    title.innerHTML = "🌸" + months[currentMonth] + "🌸";
+    title.innerHTML = "🌸 " + months[currentMonth] + " 🌸";
 
     /* update calendar info*/
     var habitTitle = document.getElementById("habitTitle");
     habitTitle.onclick = function () {
 
-    /*ask question and save answer*/
+    /* ask question and save answer */
     let habit = prompt("What's your habit", habitTitle.innerHTML);
     if(habit){
         habitTitle.innerHTML = "Click to set your habit";
@@ -221,14 +220,14 @@ body {
     }
 }
 
-/*set total days*/
+/* set total days */
 var daysInTheMonthList = [31,28,31,30,31,30,31,31,30,31,30,31];
 var daysInThisMonth = daysInTheMonthList[currentMonth];
 
 var daysCompleted = 0;
 var totalDays = document.getElementById("totalDays");
 
-/*set up the days*/
+/* set up the days */
 var dayCount = 0;
 var rowCount = 0;
 var days = document.getElementsByClassName("days");
@@ -251,7 +250,7 @@ for( var i=0; i < days.length; i++ ){
     rowCount++;
 }
 
-/* completed array*/
+/* completed array */
 var completed = new Array(31);
 for (var i = 0; i < dayCount; i++) {
     var tempString =
@@ -270,7 +269,7 @@ for (var i = 0; i < dayCount; i++) {
 console.log("completed array: " + completed);
 console.log("total days completetd: " + daysCompleted);
 
-/*check storage and update array*/
+/* check storage and update array */
 for (var i = 0; i < currentDate; i++) {
     var tempString = 
     "" + (currentMonth + 1) + "-" + (i + 1) + "-" + currentYear;
@@ -286,7 +285,7 @@ for (var i = 0; i < currentDate; i++) {
     }
 }
 
-/*update calendar*/
+/* update calendar */
 var dayDivs = document.querySelectorAll(".day");
 for (var i=0; i<dayDivs.length; i++){
     dayDivs[i].onclick = function (e) {
@@ -312,7 +311,7 @@ for (var i=0; i<dayDivs.length; i++){
     }
 }
 
-/*reset button*/
+/* reset button */
 var resetButton = document.getElementById("resetButton");
 resetButton.onclick = function() {
     for (var i = 0; i < dayCount; i++) {
